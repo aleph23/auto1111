@@ -12,6 +12,10 @@ from threading import Thread
 startup_timer = timer.startup_timer
 startup_timer.record("launcher")
 
+from cuda_malloc import init_cuda_malloc
+init_cuda_malloc()
+startup_timer.record("cuda_malloc")
+
 initialize.imports()
 
 initialize.check_versions()
