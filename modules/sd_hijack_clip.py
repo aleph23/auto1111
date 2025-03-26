@@ -226,7 +226,7 @@ class TextConditionalModel(torch.nn.Module):
         Returns a tensor with shape of (B, T, C), where B is length of the array; T is length, in tokens, of texts (including padding) - T will
         be a multiple of 77; and C is dimensionality of each token - for SD1 it's 768, for SD2 it's 1024, and for SDXL it's 1280.
         An example shape returned by this function can be: (2, 77, 768).
-        For SDXL, instead of returning one tensor avobe, it returns a tuple with two: the other one with shape (B, 1280) with pooled values.
+        For SDXL, instead of returning one tensor above, it returns a tuple with two: the other one with shape (B, 1280) with pooled values.
         Webui usually sends just one text at a time through this function - the only time when texts is an array with more than one element
         is when you do prompt editing: "a picture of a [cat:dog:0.4] eating ice cream"
         """
