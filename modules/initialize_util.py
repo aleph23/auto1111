@@ -238,8 +238,8 @@ def allow_add_middleware_after_start():
                     self.middleware_stack = None
                     res = func(self, *args, **kwargs)
                 except RuntimeError as e:
-                    print(f'Warning: "{e}", Retrying...')
-                    from starlette.middleware import Middleware
+                    middleware_name = args[0].__name__ if args else "Unknown"
+                    print(f'Warning when adding middleware {middleware_name}: "{e}", Retrying...')
                     self.user_middleware.insert(0, Middleware(*args, **kwargs))
                     self.middleware_stack = None  # ensure middleware_stack in the event of concurrent requests
             return res
