@@ -241,7 +241,7 @@ def allow_add_middleware_after_start():
                     print(f'Warning: "{e}", Retrying...')
                     from starlette.middleware import Middleware
                     self.user_middleware.insert(0, Middleware(*args, **kwargs))
-                self.middleware_stack = None  # ensure middleware_stack in the event of concurrent requests
+                    self.middleware_stack = None  # ensure middleware_stack in the event of concurrent requests
             return res
 
         return wrapper
